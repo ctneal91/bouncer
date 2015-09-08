@@ -1,18 +1,23 @@
-
-
 def check_age (age)
-  if age >= 18
+  if age.to_i >= 18
     puts "You can vote."
     puts "You can smoke."
-  elsif age >= 21
-    puts "You can drink."
-  elsif age >= 25
-    puts "You can rent a car."
-  else
+    if age.to_i >= 21
+      puts "You can drink."
+      if age.to_i >= 25
+        puts "You can rent a car."
+      end
+    end
+  elsif age.to_i > 0
     puts "You are still a minor. Leave."
   end
 end
 
-puts "How old are you?"
-age = gets.chomp.to_i
-check_age (age)
+while true
+  puts "How old are you?"
+  age = gets.chomp
+  check_age (age)
+  if age == 'quit'
+    break
+  end
+end
